@@ -4,14 +4,18 @@
 
 <h2>Hello World!</h2>
 
- <h1>{{myWelcome}}</h1>
+<!--  <h1>{{myWelcome}}</h1> -->
+ 
+ <h1 ng-repeat="x in records">{{x.id}} {{x.name}}</h1>
+ 
+ 
 <script>
 var app = angular.module('myApp', []);
 app.controller('myCtrl', function($scope, $http) {
   $http.get("http://localhost:8086/RestWebServiceJSON/employees")
   .then(function(response) {
 	  alert("test");
-      $scope.myWelcome = response.data;
+      $scope.records = response.data;
   });
 });
 </script> 
